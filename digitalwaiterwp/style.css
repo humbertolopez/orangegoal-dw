@@ -1,0 +1,354 @@
+/*
+Theme name: orangegoal's Digital Waiter
+Author: orangegoal Digital Marketing
+*/
+body {
+	margin: 0;
+	padding: 0;
+	background: #fff;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #373935;
+}
+header {
+	padding: 25px 0;
+	text-align: center;
+}
+/* font style */
+h1 {
+	font-size: 2.31em;
+}
+#welcome h1, #welcome p, #tellusmore h1, #tellusmore p {
+	color: #fff;
+	float: left;
+	margin: 0;
+}
+h2 {
+	font-size: 1.8em;
+}
+h3, legend {
+	font-size: 1.4em;
+}
+p {
+	font-size: 1.125em;
+}
+/* font style */
+.block {
+	display: block;
+	overflow: hidden;
+	clear: both;
+}
+#welcome {
+	background-image: linear-gradient(top,rgb(255,131,0)50%,rgb(55,57,53)0%);
+	background-image: -o-linear-gradient(top,rgb(255,131,0)50%,rgb(55,57,53)0%);
+	background-image: -moz-linear-gradient(top,rgb(255,131,0)50%,rgb(55,57,53)0%);
+	background-image: -webkit-linear-gradient(top,rgb(255,131,0)50%,rgb(55,57,53)0%);
+	background-image: -ms-linear-gradient(top,rgb(255,131,0)50%,rgb(55,57,53)0%);
+}
+#welcome > div, #great-choice > div {
+	max-width: 1140px;
+	width: 100%;
+	height: 100%;
+	margin: auto;
+	padding: 50px 0;
+}
+#tellusmore > div {
+	max-width: 1140px;
+	width: 100%;
+	height: 100%;
+	margin: auto;	
+	padding: 50px 0 0 0;
+}
+#tellusmore {
+	background: #4d9c2d url(img/restaurant-bg.png) no-repeat 50% 50%;
+	background-size: cover;
+}
+.restaurant-front {
+	float: left;
+}
+.waiter-window {
+	width: 350px;
+	height: 350px;
+    background: #fff url(img/digitalwaiter-intro.png) no-repeat 50% -10%;
+	border-radius: 50%;
+	float: left;	
+}
+.waiter-title {
+	width: 60%;
+	height: 175px;
+	padding: 0 2.5%;
+	float: left;
+	position: relative;
+}
+.free-title {
+    border: 2px dotted #fff;
+    border-radius: 15px;
+    position: absolute;
+    padding: 5px;
+    bottom: 5%;
+    text-align: center;
+}
+.free-title p {
+    color: #ff8300 !important;
+    font-size: 4em;
+    background: #fff;
+    padding: 0 10%;
+	border-radius: 10px;
+	text-transform: uppercase;
+}
+.regular-price {
+    position: absolute;
+    bottom: 20%;
+    left: 30%;
+}
+.regular-price p {
+    width: 115px;
+}
+#diagnostics {
+	height: 75vh;
+}
+#diagnostics h2 {
+	color: #ff8300;
+	text-align: center;
+	font-weight: normal;
+}
+#diagnostics ul {
+	margin: 0 auto;
+	padding: 0;
+	max-width: 1140px;
+	width: 95%;
+}
+#diagnostics ul li {
+	float: left;
+	width: 16%;
+	margin: 1%;
+	padding: 2% 1%;
+	list-style: none;
+	text-align: center;
+	border-radius: 15px;
+	transition: .5s;
+}
+#diagnostics ul li p {
+	font-size: 1em;
+	opacity: 0;
+	height: 0;
+	margin: 0;
+	transition: all .5s;
+}
+#diagnostics ul li:hover p {
+	opacity: 1.0;
+	height: auto;	
+}
+#diagnostics ul li p.free {
+	background: #fff;
+	width: 100%;
+	font-size: 1.2em;
+	border-radius: 8px;
+	margin: 0;
+	padding: 0;
+	opacity: 0;
+	height: 0;
+	transition: all .5s;
+}
+#diagnostics ul li:hover p.free {
+	margin: 0.5em 0 0 0;
+	padding: 10px 0;
+	height: auto;
+	opacity: 1.0;
+}
+#diagnostics ul li h3 {
+	font-weight: normal;
+}
+#adwords-diagnostic {
+	background: #ffd100;	
+}
+#seo-diagnostic {
+	background: #383a35;
+	color: #fff;
+}
+#social-network-diagnostic {
+	background: #93397f;
+	color: #fff;
+}
+#website-diagnostic {
+	background: #ff8300;
+	color: #fff;
+}
+#branding-diagnostic {
+	background: #62a60a;
+	color: #fff;
+}
+#seo-diagnostic p.free {
+	color: #383a35;	
+}
+#social-network-diagnostic p.free {
+	color: #93397f;	
+}
+#website-diagnostic p.free {
+	color: #ff8300;	
+}
+#branding-diagnostic p.free {
+	color: #62a60a;	
+}
+#great-choice {
+	position: relative;
+	color: #fff;
+	background: #31b5e8 url(img/bricks.png) repeat 50%;
+	max-height: 590px;
+	height: 70vh;
+}
+#great-choice:before {
+	content: "";
+	background: url(img/digitalwaiter-footer.png) no-repeat 20% -10%;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+#great-choice .wrapper {
+	max-width: 1140px;
+	width: 100%;
+	height: 100%;
+	margin: auto;	
+	padding: 50px 0;
+}
+#great-choice .title {
+	float: right;
+	width: 60%;
+	z-index: 2;
+	position: relative;
+}
+#great-choice p.to-login {
+	font-size: 2.25em;
+	line-height: 75px;
+	margin: 0;	
+	max-width: 14%;
+	min-width: 175px;
+    height: 75px;
+    background: url(img/to-login.png) no-repeat 100% 50%;
+}
+#login {
+	background: #b7e3ed;
+	height: 100vh;
+	display: flex;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	align-items: center;
+	justify-content: center;
+	flex-flow: column;
+}
+#customer_login {
+	background: #b7e3ed;
+	min-height: 40vh;
+	padding: 15vh 0;
+}
+.custumer_login_wrapper {
+	max-width: 1140px;
+	width: 65%;
+	margin: auto;
+}
+.register-form {
+	background: #f5f5f5;
+	border-radius: 15px;
+	width: 340px;
+	padding: 35px;
+}
+.form-1, .form-2 {
+	background: #f5f5f5;
+	width: 340px;
+	float: left;
+	padding: 15px;
+	margin: 15px;
+	border-radius: 15px;
+}
+.loginform-page {
+	background: #f5f5f5;
+}
+.register-form .input {
+    height: 60px;
+    padding: 0 0 0 70px;
+    width: 270px;
+}
+#user_login, #email {
+	background: #fff url(img/email-icon.png) no-repeat 0% 50%;
+	border: 0;
+	border-radius: 5px;
+}
+#user_pass {
+	background: #fff url(img/pass-icon.png) no-repeat 0% 50%;
+	border: 0;
+	border-radius: 5px;
+}
+.button-primary, .register-button {
+	background: #62a60a;	
+}
+.widget_facebook_login_widget input {
+	background: #3b5998;	
+}
+.widget_facebook_login_widget a {
+	color: #fff;
+	text-decoration: none;
+}
+.widget_facebook_login_widget input, .button-primary, .register-button {
+	color: #fff;
+	text-align: center;
+	font-size: 1.2em;
+	border: 0;
+	border-radius: 5px;
+	height: 60px;
+	width: 100%;
+}
+.forgot-pass {
+	text-align: center;
+}
+.forgot-pass {
+	color: #373935;
+	text-decoration: none;
+}
+.forgot-pass:hover {
+	text-decoration: underline;
+}
+#aboutrestaurant {
+	background-color: #fff2e5;
+	padding: 45px 0;
+	background-image: url(img/bread.png), url(img/steak.png);
+	background-repeat: no-repeat;
+	background-position: 5% 15%, 95% 75%;
+}
+.restaurantinfo {
+	width: 50%;
+	background: #f5f5f5;
+	border: 1px solid #999999;
+	border-radius: 15px;
+	padding: 25px;
+	margin: auto;
+}
+.edit-account fieldset {
+	border: 1px solid #999999;
+	border-radius: 15px;
+}
+.edit-account .input-text, .edit-account select {
+	height: 60px;
+	border: 0;
+	border-radius: 10px;
+	padding: 0 10px;
+	font-size: 1em;
+	color: #373935;
+}
+.edit-account .businessname {
+	width: 75%;
+}
+.edit-account .advertised-checkboxes {
+	float: left;
+	width: 25%;
+}
+.edit-account textarea {
+	width: 85%;
+    font-family: inherit;
+    font-size: 1em;
+    padding: 10px;
+    color: inherit;
+    border: 0;
+    border-radius: 15px;
+}
