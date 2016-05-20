@@ -9,11 +9,11 @@ function facebook_oauth_redirect()
 	//construct URL and redirect
 	$app_id = '586098551558393';
 	$redirect_url = get_site_url() . "/wp-admin/admin-ajax.php?action=facebook_oauth_callback";
-	$permission = "email,name";
+	$permission = "email,first_name,last_name";
 
 	$final_url = "https://www.facebook.com/dialog/oauth?client_id=" . urlencode($app_id) . "&redirect_uri=" . urlencode($redirect_url) . "&permission=" . $permission;
 
-	header("Location: " . $final_url); 
+	header("Location: " . $final_url);
 	die();
 }
 
@@ -46,26 +46,27 @@ function facebook_oauth_callback()
         if(isset($_token_and_expire_array["access_token"]))
         {   
             $access_token = $_token_and_expire_array["access_token"];
-            $user_information = file_get_contents("https://graph.facebook.com/me?access_token=" . $access_token . "&fields=email,name");
+            $user_information = file_get_contents("https://graph.facebook.com/me?access_token=" . $access_token . "&fields=email,first_name,last_name");
         	$user_information_array = json_decode($user_information, true);
 
         	$email = $user_information_array["email"];
-        	$name = $user_information_array["name"];
-        	if(username_exists($name))
+        	$first_name = $user_information_array["first_name"];
+            $last_name = $user_information_array["last_name"];
+        	if(username_exists($first_name))
 			{
-				$user_id = username_exists($name);
+				$user_id = username_exists($first_name);
 				wp_set_auth_cookie($user_id);
                 update_user_meta($user_id, "facebook_access_token", $access_token);
-				header('Location: ' . get_site_url() .'/my-account');
+				header('Location: ' . get_site_url() .'/my-account/edit-account');
 			}
 			else
 			{
 				//create a new account and then login
-				wp_create_user($name, generateRandomString(), $email);
-				$user_id = username_exists($name);
+				wp_create_user($first_name, generateRandomString(), $email);
+				$user_id = username_exists($first_name);
 				wp_set_auth_cookie($user_id);
                 update_user_meta($user_id, "facebook_access_token", $access_token);
-				header('Location: ' . get_site_url() .'/my-account');
+				header('Location: ' . get_site_url() .'/my-account/edit-account');
 			}
         }
         else
@@ -80,6 +81,5 @@ function facebook_oauth_callback()
 
     die();
 }
-
 add_action("wp_ajax_facebook_oauth_callback", "facebook_oauth_callback");
 add_action("wp_ajax_nopriv_facebook_oauth_callback", "facebook_oauth_callback");

@@ -77,7 +77,7 @@
 	        else
 	        {
 	            ?>
-	                <a href="<?php echo site_url() . '/wp-admin/admin-ajax.php?action=facebook_oauth_redirect'; ?>"><input type="button" value="Login Using Facebook" /></a>
+	                <a href="<?php echo site_url() . '/wp-admin/admin-ajax.php?action=facebook_oauth_redirect'; ?>"><input type="button" value="Login Using Facebook"/></a>
 	            <?php
 	        }
 	        
@@ -109,6 +109,7 @@
 		$advertised = get_user_meta($user_id,'advertised',true);
 		$businessdescription = get_user_meta($user_id,'businessdescription',true);
 		$businesskey = get_user_meta($user_id,'businesskey',true);
+		$chosendiagnostic = get_user_meta($user_id,'choose_diagnostic',true);
 		//about competitors
 		$aboutcompetitors = get_user_meta($user_id,'aboutcompetitors',true);
 		//orangegoal newsletter
@@ -116,7 +117,7 @@
 	?>
 		<!-- about business -->		
 		<fieldset>
-			<legend>About your business</legend>
+			<legend>About your business</legend>			
 			<p><label for="businessname">Business Name:</label></p>
 			<p><input type="text" name="businessname" value="<?php echo esc_attr($businessname); ?>" class="input-text businessname" /></p>
 			<p>
@@ -168,6 +169,7 @@
 			<p class="block">
 				<textarea name="businesskey" id="businesskey"><?php echo esc_attr($businesskey); ?></textarea>
 			</p>
+			<p><strong>Chosen diagnostic:</strong> <?php echo esc_attr($chosendiagnostic); ?></p>
 		</fieldset>
 		<!-- /about business -->
 		<!-- about competitors -->
@@ -209,6 +211,7 @@
 	add_action('edit_user_profile','my_show_user_profile');
 	function my_show_user_profile($user) {
 		//about business meta info
+		$chosendiagnostic = get_the_author_meta('choose_diagnostic',$user->ID);
 		$businessname = get_the_author_meta('businessname',$user->ID);
 		$businesslocationcity = get_the_author_meta('businesslocationcity',$user->ID);
 		$businesslocationstate = get_the_author_meta('businesslocationstate',$user->ID);
@@ -220,6 +223,15 @@
 		// newsletter
 		$orangenews = get_the_author_meta('orangenews',$user->ID);
 		?>
+			<h3>Chosen diagnostic</h3>
+			<table>
+				<tbody>
+					<tr>
+						<th>Chosen diagnostic</th>
+						<td><p><?php echo esc_attr($chosendiagnostic); ?></p></td>
+					</tr>
+				</tbody>
+			</table>
 			<h3>About the Business</h3>
 			<table class="form-table">
 				<tbody>
@@ -307,4 +319,17 @@
 		//orangegoal newsletter
 		update_user_meta($user_id,'orangenews',$_POST['orangenews']);
 	}
+	add_filter('woocommerce_login_redirect','login_redirect_after_login',10,3);
+	function login_redirect_after_login($redirect_to,$user){
+		$role = $user->roles[0];
+		if($role == 'customer' || $role == 'subscriber') {
+			$redirect_to = '/my-account/edit-account';
+		} else {
+			$redirect_to = admin_url();
+		}
+		return $redirect_to;
+	}
+	// scripts 
+	wp_enqueue_script('soft_scroll',get_template_directory_uri() .'/js/scroll.js',array('jquery'),1.0,true);	
+	wp_enqueue_script('choose_diagnostic',get_template_directory_uri() .'/js/choose-diagnostic.js',array('jquery'),1.0,true);
 ?>

@@ -2,11 +2,33 @@
 Theme name: orangegoal's Digital Waiter
 Author: orangegoal Digital Marketing
 */
+@font-face {
+    font-family: 'Proxima';
+    src: url('fonts/proximanovabold_2-webfont.eot');
+    src: url('fonts/proximanovabold_2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanovabold_2-webfont.woff2') format('woff2'),
+         url('fonts/proximanovabold_2-webfont.woff') format('woff'),
+         url('fonts/proximanovabold_2-webfont.ttf') format('truetype'),
+         url('fonts/proximanovabold_2-webfont.svg#proxima_nova_boldbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Proxima';
+    src: url('fonts/proximanovalight_2-webfont.eot');
+    src: url('fonts/proximanovalight_2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/proximanovalight_2-webfont.woff2') format('woff2'),
+         url('fonts/proximanovalight_2-webfont.woff') format('woff'),
+         url('fonts/proximanovalight_2-webfont.ttf') format('truetype'),
+         url('fonts/proximanovalight_2-webfont.svg#proxima_nova_lightlight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
 	margin: 0;
 	padding: 0;
 	background: #fff;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Proxima', sans-serif;
 	color: #373935;
 }
 header {
@@ -17,7 +39,7 @@ header {
 h1 {
 	font-size: 2.31em;
 }
-#welcome h1, #welcome p, #tellusmore h1, #tellusmore p {
+#welcome h1, #welcome p, #tellusmore h1, #tellusmore p, #thanks h1, #thanks p {
 	color: #fff;
 	float: left;
 	margin: 0;
@@ -44,7 +66,7 @@ p {
 	background-image: -webkit-linear-gradient(top,rgb(255,131,0)50%,rgb(55,57,53)0%);
 	background-image: -ms-linear-gradient(top,rgb(255,131,0)50%,rgb(55,57,53)0%);
 }
-#welcome > div, #great-choice > div {
+#welcome > div, #great-choice > div, #thanks > div {
 	max-width: 1140px;
 	width: 100%;
 	height: 100%;
@@ -104,7 +126,10 @@ p {
     width: 115px;
 }
 #diagnostics {
-	height: 75vh;
+	height: 70vh;
+	margin: 15vh 0;
+	opacity: 1;
+	transition: all 1s;
 }
 #diagnostics h2 {
 	color: #ff8300;
@@ -119,24 +144,28 @@ p {
 }
 #diagnostics ul li {
 	float: left;
+	min-height: 175px;
 	width: 16%;
 	margin: 1%;
 	padding: 2% 1%;
 	list-style: none;
 	text-align: center;
 	border-radius: 15px;
-	transition: .5s;
+	transition: all 1s;
 }
 #diagnostics ul li p {
 	font-size: 1em;
 	opacity: 0;
 	height: 0;
 	margin: 0;
-	transition: all .5s;
+	transition: all .25s;
 }
 #diagnostics ul li:hover p {
 	opacity: 1.0;
-	height: auto;	
+	height: auto;
+	margin: auto;
+	transition: all .25s;
+	transition-delay: .25s;
 }
 #diagnostics ul li p.free {
 	background: #fff;
@@ -147,16 +176,20 @@ p {
 	padding: 0;
 	opacity: 0;
 	height: 0;
-	transition: all .5s;
+	transition: all .25s;
 }
 #diagnostics ul li:hover p.free {
 	margin: 0.5em 0 0 0;
 	padding: 10px 0;
 	height: auto;
 	opacity: 1.0;
+	transition: opacity .25s, margin padding height 0s;
 }
 #diagnostics ul li h3 {
 	font-weight: normal;
+}
+#diagnostics a {
+	text-decoration: none;
 }
 #adwords-diagnostic {
 	background: #ffd100;	
@@ -177,24 +210,34 @@ p {
 	background: #62a60a;
 	color: #fff;
 }
-#seo-diagnostic p.free {
+#adwords-diagnostic p.free a {
 	color: #383a35;	
 }
-#social-network-diagnostic p.free {
+#seo-diagnostic p.free a {
+	color: #383a35;	
+}
+#social-network-diagnostic p.free a {
 	color: #93397f;	
 }
-#website-diagnostic p.free {
+#website-diagnostic p.free a {
 	color: #ff8300;	
 }
-#branding-diagnostic p.free {
+#branding-diagnostic p.free a {
 	color: #62a60a;	
 }
 #great-choice {
 	position: relative;
 	color: #fff;
 	background: #31b5e8 url(img/bricks.png) repeat 50%;
-	max-height: 590px;
+	/*max-height: 590px;*/
 	height: 70vh;
+	min-height: 510px;
+	/*margin: 15vh 0;*/
+	opacity: 0;
+	transition: all 1s;
+}
+#great-choice:target {
+	opacity: 1.0;
 }
 #great-choice:before {
 	content: "";
@@ -205,11 +248,11 @@ p {
 	top: 0;
 	left: 0;
 }
-#great-choice .wrapper {
+#great-choice .wrapper, #meanwhile .wrapper {
 	max-width: 1140px;
 	width: 100%;
 	height: 100%;
-	margin: auto;	
+	margin: auto;
 	padding: 50px 0;
 }
 #great-choice .title {
@@ -227,9 +270,14 @@ p {
     height: 75px;
     background: url(img/to-login.png) no-repeat 100% 50%;
 }
+#great-choice p.to-login a {
+	color: #fff;
+	text-decoration: none;
+}
 #login {
 	background: #b7e3ed;
 	height: 100vh;
+	min-height: 720px;
 	display: flex;
 	display: -webkit-flex;
 	display: -moz-flex;
@@ -237,6 +285,13 @@ p {
 	align-items: center;
 	justify-content: center;
 	flex-flow: column;
+}
+.login-home {
+	opacity: 0;
+	transition: all 1s;
+}
+.login-home:target {
+	opacity: 1.0;
 }
 #customer_login {
 	background: #b7e3ed;
@@ -275,10 +330,15 @@ p {
 	border: 0;
 	border-radius: 5px;
 }
-#user_pass {
+#user_pass, #password {
 	background: #fff url(img/pass-icon.png) no-repeat 0% 50%;
 	border: 0;
 	border-radius: 5px;
+}
+#signupform .input {
+	font-size: 1em;
+	font-family: 'Proxima';
+	font-weight: bold;
 }
 .button-primary, .register-button {
 	background: #62a60a;	
@@ -351,4 +411,53 @@ p {
     color: inherit;
     border: 0;
     border-radius: 15px;
+}
+#meanwhile {
+	text-align: center;
+}
+#thanks {
+	background-image: linear-gradient(top,rgb(255,131,0)50%,rgb(49,181,232)0%);
+	background-image: -o-linear-gradient(top,rgb(255,131,0)50%,rgb(49,181,232)0%);
+	background-image: -moz-linear-gradient(top,rgb(255,131,0)50%,rgb(49,181,232)0%);
+	background-image: -webkit-linear-gradient(top,rgb(255,131,0)50%,rgb(49,181,232)0%);
+	background-image: -ms-linear-gradient(top,rgb(255,131,0)50%,rgb(49,181,232)0%);
+}
+#thanks p {
+	margin: 1em 0;
+}
+#meanwhile h2 {
+	width: 65%;
+	min-width: 445px;	
+	color: #e97200;
+	margin: auto;
+}
+#meanwhile ul {
+	margin: 45px auto;
+	padding: 0;
+	width: 65%;
+	min-width: 700px;
+}
+#meanwhile ul a {
+	transition: all .5s;
+}
+#meanwhile ul a:hover {
+	opacity: 0.7;
+}
+#meanwhile ul li {
+	float: left;
+	list-style: none;
+	width: 33%;	
+}
+#meanwhile p.myaccount_user a {
+	color: #e97200;
+	text-decoration: none;	
+}
+#meanwhile p.myaccount_user a:hover {
+	text-decoration: underline;
+}
+#thanks .waiter-title {
+	height: auto;
+}
+#choose_diagnostic {
+	display: none;
 }

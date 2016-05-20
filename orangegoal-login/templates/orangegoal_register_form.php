@@ -1,6 +1,6 @@
 <!-- register form -->
 <?php if($attributes['show_title']) : ?>
-	<h2><?php _e('Register to orangegoal','login-orangegoal') ?></h2>
+	<h2><?php _e('Register to Orangegoal Digital Marketing','login-orangegoal') ?></h2>
 <?php endif; ?>
 <!-- show errors -->
 <?php if(count($attributes['errors']) > 0): ?>
@@ -13,31 +13,42 @@
 <?php if ($attributes['registered']) : ?>
 	<p>
 		<?php
-			printf(__('You have successfully registered to <strong>%s</strong>. We have emailed your password to the email address you entered.','login-orangegoal'),get_bloginfo('name'));
+			printf(__('You have successfully registered to <strong>Orangegoal Digital Marketing</strong>. <a href="%s">Log in with your email and password</a>.','login-orangegoal'),home_url('member-login'));
 		?>
 	</p>
 <?php endif; ?>
 <!-- /success -->
+<!-- logged out message -->
+<?php if($attributes['logged_out']) : ?>
+	<?php _e('You have signed out. Come back again soon!','login-orangegoal'); ?>
+<?php endif; ?>
+<!-- logged out message -->
 <form id="signupform" action="<?php echo wp_registration_url(); ?>" method="post">
 	<p>
-		<label for="email"><?php _e('Email','login-orangegoal'); ?>	<strong>*</strong></label>
-		<input type="text" name="email" id="email" class="input">
+		<!--<label for="email"><?php _e('Email','login-orangegoal'); ?>	<strong>*</strong></label> -->
+		<input type="text" name="email" id="email" class="input" placeholder="<?php _e('Email','login-orangegoal'); ?>">
 	</p>
 	<p>
-		<label for="first_name"><?php _e('First name','login-orangegoal'); ?> <strong>*</strong></label>
-		<input type="text" name="first_name" id="first-name" class="input">
+		<!-- <label for="first_name"><?php _e('First name','login-orangegoal'); ?> <strong>*</strong></label> -->
+		<input type="text" name="first_name" id="first-name" class="input" placeholder="<?php _e('First name','login-orangegoal'); ?>">
 	</p>
 	<p>
-		<label for="last_name"><?php _e('Last name','login-orangegoal'); ?> <strong>*</strong></label>
-		<input type="text" name="last_name" id="last-name" class="input">
-		<input type="hidden" name="choose_url" value="<?php echo 'http://',$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];?>"  readonly/>
-	</p>	
-	<p>
-		<?php _e('Your password will be generated automatically and sent to your email address.','login-orangegoal'); ?>
+		<!-- <label for="last_name"><?php _e('Last name','login-orangegoal'); ?> <strong>*</strong></label> -->
+		<input type="text" name="last_name" id="last-name" class="input" placeholder="<?php _e('Last name','login-orangegoal'); ?>">
 	</p>
 	<p>
-		<input type="submit" name="submit" class="register-button" value="<?php _e('Register','login-orangegoal'); ?>">
+		<!-- <label for="password"><?php _e('Your password','login-orangegoal'); ?> <strong>*</strong></label> -->
+		<input type="text" name="password" id="password" class="input" placeholder="<?php _e('Your password','login-orangegoal'); ?>">
+	</p>
+	<p>
+		<!-- <label for="repeat_password"><?php _e('Repeat your password','login-orangegoal'); ?> <strong>*</strong></label> -->
+		<input type="text" name="repeat_password" id="repeat_password" class="input" placeholder="<?php _e('Repeat your password','login-orangegoal'); ?>">
+	</p>
+	<!-- hidden -->
+		<input type="text" name="choose_diagnostic" id="choose_diagnostic">
+	<!-- / hidden -->
+	<p>
+		<input type="submit" name="submit" class="register-button" value="<?php _e('Register!','login-orangegoal'); ?>">
 	</p>
 </form>
-<?php the_widget('Facebook_Login_Widget'); ?>
 <!-- register form -->

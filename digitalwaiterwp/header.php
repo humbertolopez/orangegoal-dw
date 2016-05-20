@@ -8,5 +8,25 @@
 </head>
 <body>
 <header>
-	<img src="<?php echo get_template_directory_uri(); ?>/img/orangegoal-logo.png">
+	<?php if(is_home()) {
+		?>
+			<a href="<?php bloginfo('url'); ?>">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/orangegoal-logo.png">
+			</a>
+		<?php
+		} elseif(is_page('member-login')) {
+		?>
+			<a href="<?php bloginfo('url'); ?>">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/orangegoal-logo.png">
+			</a>
+		<?php
+
+		} else {
+		?>
+			<a href="<?php bloginfo('url'); ?>/my-account/edit-account">
+				<img src="<?php echo get_template_directory_uri(); ?>/img/orangegoal-logo.png">
+			</a>
+		<?php
+		}
+	?>
 </header>

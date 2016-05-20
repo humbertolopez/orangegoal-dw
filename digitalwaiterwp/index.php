@@ -37,7 +37,7 @@
 						<?php the_post_thumbnail(); ?>
 						<h3><?php the_title(); ?></h3>
 						<p><?php the_content(); ?></p>
-						<p class="free">FREE diagnostic</p>
+						<p class="free"><a href="#great-choice" class="click-<?php echo $post->post_name; ?>">FREE diagnostic</a></p>
 					</li>
 				<?php endwhile; endif; ?>
 			</ul>
@@ -48,12 +48,12 @@
 					<h1>Great choice!</h1>
 					<h2>Now, we have to ask you to login.</h2>
 					<p>You need to create an account in order to have access to our diagnostics, results and suggestions. If you already have a facebook account, you can use it to log in or you can create your own with an e-mail and password.</p>
-					<p class="to-login">Login</p>
+					<p class="to-login"><a href="#login">Login</a></p>
 				</div>
 				
 			</div>
 		</section>
-		<section id="login" class="block">
+		<section id="login" class="block login-home">
 			<div class="register-form block">
 				<?php echo do_shortcode('[custom-orangegoal-register]'); ?>
 			</div>
@@ -83,5 +83,4 @@
 		endwhile; endif;
 	}
 ?>
-</body>
-</html>
+<?php get_footer(); ?>
