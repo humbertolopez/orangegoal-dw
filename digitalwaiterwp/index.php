@@ -10,16 +10,15 @@
 				<div class="waiter-title">
 					<h1>Hi! We are Orangegoal Digital Marketing and we'll serve you today.</h1>
 					<h3>This is our services menu. Check it out! We'll give you a minute.</h3>
-				</div>
-				<div class="waiter-title">
 					<p> Here you can take a look to our specialties and pick the professional marketing diagnostic that interest you the most. Take this opportunity and get your first diagnostic for</p>
-					<div class="free-title">
+					<div>
+					<div class="free-title block">
 						<p>Free</p>
 					</div>
 					<div class="regular-price">
-						<p>from regular price of $89.99</p>
+						<p>from regular price of <span>$89.99</span></p>
 					</div>
-				</div>
+				</div>				
 			</div>
 		</section>
 		<section id="diagnostics">
@@ -46,16 +45,12 @@
 			<div class="wrapper">
 				<div class="title">
 					<h1>Great choice!</h1>
-					<h2>Now, we have to ask you to login.</h2>
+					<h2>Now, we have to ask you to register.</h2>
 					<p>You need to create an account in order to have access to our diagnostics, results and suggestions. If you already have a facebook account, you can use it to log in or you can create your own with an e-mail and password.</p>
-					<p class="to-login"><a href="#login">Login</a></p>
-				</div>
-				
-			</div>
-		</section>
-		<section id="login" class="block login-home">
-			<div class="register-form block">
-				<?php echo do_shortcode('[custom-orangegoal-register]'); ?>
+					<div class="register-form block">
+						<?php echo do_shortcode('[custom-orangegoal-register]'); ?>
+					</div>
+				</div>				
 			</div>
 		</section>
 	<?php
@@ -73,7 +68,7 @@
 				<div class="register-form block">
 					<?php echo do_shortcode('[login-orangegoal-form]'); ?>
 				</div>
-			</section>	
+			</section>
 		<?php
 	} else {
 		if(have_posts()) : while(have_posts()) : the_post();

@@ -39,20 +39,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<form class="edit-account" action="" method="post">
 			<?php do_action( 'woocommerce_edit_account_form_start' ); ?>
 			<p class="form-row form-row-first">
-				<label for="account_first_name"><?php _e( 'First name', 'woocommerce' ); ?></label>
-				<input type="text" class="input-text" name="account_first_name" id="account_first_name" value="<?php echo esc_attr( $user->first_name ); ?>" />
+				<!-- <label for="account_first_name"><?php _e( 'First name', 'woocommerce' ); ?></label> -->
+				<input placeholder="Your first name" type="text" class="input-text" name="account_first_name" id="account_first_name" value="<?php echo esc_attr( $user->first_name ); ?>" />
 			</p>
 			<p class="form-row form-row-last">
-				<label for="account_last_name"><?php _e( 'Last name', 'woocommerce' ); ?></label>
-				<input type="text" class="input-text" name="account_last_name" id="account_last_name" value="<?php echo esc_attr( $user->last_name ); ?>" />
+				<!-- <label for="account_last_name"><?php _e( 'Last name', 'woocommerce' ); ?></label> -->
+				<input placeholder="Your last name" type="text" class="input-text" name="account_last_name" id="account_last_name" value="<?php echo esc_attr( $user->last_name ); ?>" />
 			</p>
 			<div class="clear"></div>
 			<p class="form-row form-row-wide">
-				<label for="account_email"><?php _e( 'Email address', 'woocommerce' ); ?> <span class="required">*</span></label>
-				<input type="email" class="input-text" name="account_email" id="account_email" value="<?php echo esc_attr( $user->user_email ); ?>" />
+				<!-- <label for="account_email"><?php _e( 'Email address', 'woocommerce' ); ?> <span class="required">*</span></label> -->
+				<input placeholder="Email account" type="email" class="input-text" name="account_email" id="account_email" value="<?php echo esc_attr( $user->user_email ); ?>" />
 			</p>
 			<?php do_action( 'woocommerce_edit_account_form' ); ?>
-			<fieldset>
+			<!-- <fieldset>
 				<legend><?php _e( 'Password Change', 'woocommerce' ); ?></legend>
 				<p>If you're using your facebook account to login, you can leave blank this area.</p>
 				<p class="form-row form-row-wide">
@@ -67,7 +67,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<label for="password_2"><?php _e( 'Confirm New Password', 'woocommerce' ); ?></label>
 					<input type="password" class="input-text" name="password_2" id="password_2" />
 				</p>
-			</fieldset>
+			</fieldset> -->
 			<div class="clear"></div>
 			<p>
 				<?php wp_nonce_field( 'save_account_details' ); ?>		

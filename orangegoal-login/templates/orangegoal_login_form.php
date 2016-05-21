@@ -35,4 +35,5 @@
 	);	
 ?>
 <a href="<?php echo wp_lostpassword_url(); ?>" class="forgot-pass"><?php _e('Forgot your password?','login-orangegoal'); ?></a>
+<p></p>
 <!-- orangegoal custom login -->

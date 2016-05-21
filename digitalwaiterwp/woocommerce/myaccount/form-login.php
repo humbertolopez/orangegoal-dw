@@ -20,15 +20,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-
 <?php wc_print_notices(); ?>
-
 <?php do_action( 'woocommerce_before_customer_login_form' ); ?>
-
 <section id="login" class="block">
 	<div class="register-form block">
 		<?php echo do_shortcode('[login-orangegoal-form]'); ?>
 	</div>
-</section>	
-
+</section>
 <?php do_action( 'woocommerce_after_customer_login_form' ); ?>

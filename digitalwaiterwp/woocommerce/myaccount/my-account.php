@@ -46,7 +46,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			printf(
 				__( 'Hey <strong>%1$s</strong>! (not %1$s? <a href="%2$s">Sign out</a>).', 'woocommerce' ) . ' ',
 				$current_user->display_name,
-				wc_get_endpoint_url( 'customer-logout', '', wc_get_page_permalink( 'myaccount' ) )
+				wc_get_endpoint_url( 'customer-logout' ), '', wc_get_page_permalink( 'myaccount' ) )
 			);
 
 			printf( __( 'You can come back here anytime and <a href="%s">add or edit your business info</a>.', 'woocommerce' ),

@@ -32,17 +32,17 @@
 		<!-- <label for="first_name"><?php _e('First name','login-orangegoal'); ?> <strong>*</strong></label> -->
 		<input type="text" name="first_name" id="first-name" class="input" placeholder="<?php _e('First name','login-orangegoal'); ?>">
 	</p>
-	<p>
-		<!-- <label for="last_name"><?php _e('Last name','login-orangegoal'); ?> <strong>*</strong></label> -->
+	<!-- <p>
+		<label for="last_name"><?php _e('Last name','login-orangegoal'); ?> <strong>*</strong></label>
 		<input type="text" name="last_name" id="last-name" class="input" placeholder="<?php _e('Last name','login-orangegoal'); ?>">
-	</p>
+	</p>  -->
 	<p>
 		<!-- <label for="password"><?php _e('Your password','login-orangegoal'); ?> <strong>*</strong></label> -->
-		<input type="text" name="password" id="password" class="input" placeholder="<?php _e('Your password','login-orangegoal'); ?>">
+		<input type="password" name="password" id="password" class="input" placeholder="<?php _e('Your password','login-orangegoal'); ?>">
 	</p>
 	<p>
 		<!-- <label for="repeat_password"><?php _e('Repeat your password','login-orangegoal'); ?> <strong>*</strong></label> -->
-		<input type="text" name="repeat_password" id="repeat_password" class="input" placeholder="<?php _e('Repeat your password','login-orangegoal'); ?>">
+		<input type="password" name="repeat_password" id="repeat_password" class="input" placeholder="<?php _e('Repeat your password','login-orangegoal'); ?>">
 	</p>
 	<!-- hidden -->
 		<input type="text" name="choose_diagnostic" id="choose_diagnostic">

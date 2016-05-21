@@ -195,7 +195,7 @@
 				if(is_user_logged_in()){
 					$this->redirect_logged_in_user();
 				} else {
-					wp_redirect('#login');
+					wp_redirect('#great-choice');
 				}
 				exit;
 			}
@@ -238,7 +238,7 @@
 		}
 		public function do_register_user() {
 			if('POST' == $_SERVER['REQUEST_METHOD']){
-				$redirect_url = home_url('#login');
+				$redirect_url = home_url('#great-choice');
 				if(!get_option('users_can_register')) {
 					$redirect_url = add_query_arg('register-errors','closed',$redirect_url);
 				} else {

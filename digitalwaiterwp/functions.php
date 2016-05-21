@@ -118,14 +118,15 @@
 		<!-- about business -->		
 		<fieldset>
 			<legend>About your business</legend>			
-			<p><label for="businessname">Business Name:</label></p>
-			<p><input type="text" name="businessname" value="<?php echo esc_attr($businessname); ?>" class="input-text businessname" /></p>
-			<p>
+			<!-- <p><label for="businessname">Business Name:</label></p> -->
+			<p><input type="text" name="businessname" value="<?php echo esc_attr($businessname); ?>" class="input-text businessname" placeholder="Business Name" /></p>
+			<!-- <p>
 				<label for="busineslocation">Location, city and state:</label>
-			</p>
+			</p> -->
 			<p>
-				<input type="text" name="businesslocationcity" value="<?php echo esc_attr($businesslocationcity); ?>" class="input-text" />
-				<select title="Select state" name="businesslocationstate">
+				<input placeholder="City" type="text" name="businesslocationcity" value="<?php echo esc_attr($businesslocationcity); ?>" class="input-text inputlocation" />
+				<select title="Select state" name="businesslocationstate" class="inputlocation">
+					<option value="" disabled selected>State</option>
 					<?php 
 						$states = array("Alaska","Alabama","Arkansas","Arizona","California","Colorado","Connecticut","District of Columbia","Delaware","Florida","Hawaii","Iowa","Idaho","Illinois","Indiana","Kansas","Kentucky","Louisiana","Massachusetts","Maryland",
 							"Maine","Michigan","Minnesota","Missouri","Mississippi","Montana","North Carolina","North Dakota","Nebraska","New Hampshire","New Jersey","New Mexico","Nevada","New York","Ohio","Oklahoma","Oregon","Pennsylvania",
@@ -157,18 +158,22 @@
 					}
 				?>				
 			</div>
-			<p class="block">
+			<!-- <p class="block">
 				<label for="businessdescription">A little description about your restaurant, what it serves and the kind of guests it has:</label>
-			</p>
+			</p>  -->
 			<p class="block">
-				<textarea name="businessdescription" id="businessdescription"><?php echo esc_attr($businessdescription); ?></textarea>
+				<textarea name="businessdescription" id="businessdescription" placeholder="A little description about your restaurant, what it serves and the kind of guests it has:"><?php echo esc_attr($businessdescription); ?></textarea>
 			</p>
-			<p class="block">
+			<!-- <p class="block">
 				<label for="businesskey">The key advantage of your restaurant, what makes it better than any of its competitors?</label>
-			</p>
+			</p> -->
 			<p class="block">
-				<textarea name="businesskey" id="businesskey"><?php echo esc_attr($businesskey); ?></textarea>
+				<textarea name="businesskey" id="businesskey" placeholder="The key advantage of your restaurant, what makes it better than any of its competitors?"><?php echo esc_attr($businesskey); ?></textarea>
 			</p>
+			<!-- <p class="block">
+				<label for="up_avatar">Upload your logo.</label>
+				<input type="file" name="up_avatar"/>
+			</p> -->
 			<p><strong>Chosen diagnostic:</strong> <?php echo esc_attr($chosendiagnostic); ?></p>
 		</fieldset>
 		<!-- /about business -->
@@ -176,8 +181,8 @@
 		<fieldset>
 			<legend>About your competitors</legend>
 			<p>
-				<label for="aboutcompetitors">Who are your principal competitors?</label>
-				<textarea name="aboutcompetitors" id="aboutcompetitors"><?php echo esc_attr($aboutcompetitors); ?></textarea>
+				<!-- <label for="aboutcompetitors">Who are your principal competitors?</label> -->
+				<textarea name="aboutcompetitors" id="aboutcompetitors" placeholder="Who are your principal competitors?"><?php echo esc_attr($aboutcompetitors); ?></textarea>
 			</p>
 		</fieldset>
 		<!-- /about competitors -->
@@ -195,6 +200,7 @@
 	 */
 	add_action('woocommerce_save_account_details','my_woocommerce_save_account_details');
 	function my_woocommerce_save_account_details($user_id) {
+			require_once ABSPATH.'wp-admin/includes/file.php';
 			//about your business
 			update_user_meta($user_id,'businessname',esc_attr($_POST['businessname']));
 			update_user_meta($user_id,'businesslocationcity',esc_attr($_POST['businesslocationcity']));
@@ -206,6 +212,23 @@
 			update_user_meta($user_id,'aboutcompetitors',esc_attr($_POST['aboutcompetitors']));
 			//about competitors
 			update_user_meta($user_id,'orangenews',$_POST['orangenews']);
+			//handle avatar uploading
+			define('MAX_AVATAR_WIDTH',150);
+			define('MAX_AVATAR_HEIGHT',150);
+			if(isset($_FILES['up_avatar'])){
+				$status = wp_handle_upload($_FILES['up_avatar']);
+				if(empty($status['error'])){
+					$resize = image_resize($status['file'],150,150,$crop = false);
+					if(is_wp_error($resize)){
+						wp_die($resize->get_error_messages());
+					}
+					$uploads = wp_upload_dir();
+					$resized_url = $uploads['url'].'/'.basename($resize);
+					update_user_meta($user_id,'customavatar',$resized_url);
+				} else {
+					wp_die(sprintf(__('Error uploading your logo: %s'),$status['error']));
+				}
+			}
 	} // end my_woocommerce_save_account_details
 	add_action('show_user_profile','my_show_user_profile');
 	add_action('edit_user_profile','my_show_user_profile');
